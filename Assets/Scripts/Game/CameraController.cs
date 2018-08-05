@@ -3,22 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
+    public Transform followTo;
 
-    #region public variables
-    public Transform _object;
-    #endregion
-
-    #region private variables
     private Vector3 offset;
-    #endregion
 
-    #region private variables
     void Start () {
-        offset = transform.position - _object.transform.position;
+        offset = transform.position - followTo.transform.position;
 	}
 	
 	void LateUpdate () {
-        transform.position = _object.transform.position + offset;
+        transform.position = followTo.transform.position + offset;
     }
-    #endregion
 }

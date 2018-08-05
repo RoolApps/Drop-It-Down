@@ -3,20 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EndArea : MonoBehaviour {
+    private ObstacleCreator obstacleCreator;
 
-    #region private variables
-    private ObstacleCreator[] obstacleCreators;
-    #endregion
-
-    #region private methods
     private void Start() {
-        obstacleCreators = FindObjectsOfType<ObstacleCreator>();
+        obstacleCreator = GameObject.FindObjectOfType<ObstacleCreator>();
     }
-    #endregion
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag == "Player") {
-            foreach(ObstacleCreator creator in obstacleCreators) creator.CreateObstacle();
+        if (other.CompareTag("Player")) {
+            obstacleCreator.CreateObstacle();
         }
     }
 }

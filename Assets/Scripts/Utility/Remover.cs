@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-public class ObstacleRemover : MonoBehaviour {
-
+public class Remover : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         Destroy(other.gameObject);
     }

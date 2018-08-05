@@ -1,14 +1,9 @@
 ﻿using UnityEngine;
 
 public class Follower : MonoBehaviour {
+    public Transform followTo;
 
-    #region public variables
-    public Transform _object;
-    #endregion
-
-    #region private methods   
     void Update () {
-        transform.position = _object.position;
+        transform.position = followTo.position;
 	}
-    #endregion
 }

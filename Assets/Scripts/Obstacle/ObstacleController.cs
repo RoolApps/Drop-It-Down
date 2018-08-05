@@ -1,34 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleController : MonoBehaviour {
-
-    #region public variables
-    public float destructionForse = 1f;
     public PassedArea passedArea;
-    #endregion
+    public float destructionForse = 1f;
 
-    #region private variables
     private GameController gameController;
     private List<GameObject> obstacles = new List<GameObject>();
-    #endregion
 
-    #region private methods
     private void Start() {
+        gameController = GameObject.FindObjectOfType<GameController>();
+
         foreach(Transform obstacle in transform) {
-            if (obstacle.CompareTag("Obstacle")) obstacles.Add(obstacle.gameObject);
+            if (obstacle.CompareTag("Obstacle")) {
+                obstacles.Add(obstacle.gameObject);
+            }
         }
 
-        if (passedArea) passedArea.passed += destruct;
-        gameController = FindObjectOfType<GameController>();
+        if (passedArea) {
+            passedArea.passed += destruct;
+        }
     }
 
-    private void Update() {
-        if (Input.GetMouseButtonDown(0)) destruct();
-    }
-
-    private void destruct() {
+    public void destruct() {
         gameController.EncreaseScore();
         foreach(GameObject obstacle in obstacles) {
             Rigidbody rb = obstacle.GetComponent<Rigidbody>();
@@ -39,5 +33,4 @@ public class ObstacleController : MonoBehaviour {
             }
         }
     }
-    #endregion
 }

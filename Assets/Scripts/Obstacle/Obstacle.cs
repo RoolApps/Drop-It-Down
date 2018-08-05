@@ -2,15 +2,11 @@
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
-
-    #region private variables
-    private GameController gameController;
     private bool isColliding = false;
-    #endregion
+    private GameController gameController;
 
-    #region private methods
     private void Start() {
-        gameController = FindObjectOfType<GameController>();
+        gameController = GameObject.FindObjectOfType<GameController>();
     }
 
     private void Update() {
@@ -22,8 +18,7 @@ public class Obstacle : MonoBehaviour {
         isColliding = true;
 
         if (other.CompareTag("Player")) {
-            gameController.EndGame();
+            gameController.playerCollideWithObstacle();
         }
     }
-    #endregion
 }
