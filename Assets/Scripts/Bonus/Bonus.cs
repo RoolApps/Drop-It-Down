@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 public abstract class Bonus : MonoBehaviour {
-    protected GameController gameController;
+    //protected GameController gameController;
 
     private void Start() {
-        gameController = FindObjectOfType<GameController>();
+        //gameController = FindObjectOfType<GameController>();
     }
 
     private void OnTriggerEnter(Collider other) {

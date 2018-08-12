@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: f9201766a5a60b847adbde4ff7ae72d9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cylinder
+    100002: Obstacle_1
+    100004: Obstacle_1_001
+    100006: Obstacle_1_002
+    100008: Obstacle_1_003
+    100010: //RootNode
+    100012: Obstacle
+    100014: Obstacle_001
+    100016: Obstacle_002
+    100018: Obstacle_003
+    100020: Trigger
+    100022: Trigger_001
+    100024: Trigger_002
+    100026: Trigger_003
+    100028: EndArea
+    100030: PassArea
+    400000: Cylinder
+    400002: Obstacle_1
+    400004: Obstacle_1_001
+    400006: Obstacle_1_002
+    400008: Obstacle_1_003
+    400010: //RootNode
+    400012: Obstacle
+    400014: Obstacle_001
+    400016: Obstacle_002
+    400018: Obstacle_003
+    400020: Trigger
+    400022: Trigger_001
+    400024: Trigger_002
+    400026: Trigger_003
+    400028: EndArea
+    400030: PassArea
+    2100000: unnamed
+    2300000: Cylinder
+    2300002: Obstacle_1
+    2300004: Obstacle_1_001
+    2300006: Obstacle_1_002
+    2300008: Obstacle_1_003
+    2300010: Obstacle
+    2300012: Obstacle_001
+    2300014: Obstacle_002
+    2300016: Obstacle_003
+    2300018: Trigger
+    2300020: Trigger_001
+    2300022: Trigger_002
+    2300024: Trigger_003
+    2300026: EndArea
+    2300028: PassArea
+    3300000: Cylinder
+    3300002: Obstacle_1
+    3300004: Obstacle_1_001
+    3300006: Obstacle_1_002
+    3300008: Obstacle_1_003
+    3300010: Obstacle
+    3300012: Obstacle_001
+    3300014: Obstacle_002
+    3300016: Obstacle_003
+    3300018: Trigger
+    3300020: Trigger_001
+    3300022: Trigger_002
+    3300024: Trigger_003
+    3300026: EndArea
+    3300028: PassArea
+    4300000: Obstacle_1_003
+    4300002: Obstacle_1_002
+    4300004: Obstacle_1_001
+    4300006: Obstacle_1
+    4300008: Cylinder
+    4300010: Trigger
+    4300012: Obstacle_003
+    4300014: Obstacle_002
+    4300016: Obstacle_001
+    4300018: Obstacle
+    4300020: Trigger_003
+    4300022: Trigger_002
+    4300024: Trigger_001
+    4300026: PassArea
+    4300028: EndArea
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

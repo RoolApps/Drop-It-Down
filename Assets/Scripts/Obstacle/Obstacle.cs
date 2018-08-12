@@ -3,11 +3,6 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
     private bool isColliding = false;
-    private GameController gameController;
-
-    private void Start() {
-        gameController = GameObject.FindObjectOfType<GameController>();
-    }
 
     private void Update() {
         isColliding = false;
@@ -17,8 +12,8 @@ public class Obstacle : MonoBehaviour {
         if (isColliding) return;
         isColliding = true;
 
-        if (other.CompareTag("Player")) {
-            gameController.playerCollideWithObstacle();
+        if (other.CompareTag("PlayerSphere")) {
+            GameController.instance.EndGame();
         }
     }
 }

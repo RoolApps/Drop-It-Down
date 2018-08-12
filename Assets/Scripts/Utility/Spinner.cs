@@ -1,13 +1,13 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spinner : MonoBehaviour {
-    public float duration = 1f;
     public float speed = 5f;
+    public float duration = 1f;
     public bool infinity = false;
 
     private void Start() {
+        RotateRandomAngle();
         if (!infinity) {
             StartCoroutine(spinOnce());
         }
@@ -25,5 +25,9 @@ public class Spinner : MonoBehaviour {
             transform.Rotate(0, speed, 0);
             yield return null;
         }
+    }
+
+    private void RotateRandomAngle() {
+        transform.rotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up);
     }
 }

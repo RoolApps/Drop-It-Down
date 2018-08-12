@@ -8,6 +8,8 @@ TagManager:
   - BombBonus
   - StarBonus
   - MagnetBonus
+  - PlayerSphere
+  - PlayerArea
   layers:
   - Default
   - TransparentFX

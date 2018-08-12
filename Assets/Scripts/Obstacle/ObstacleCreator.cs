@@ -1,15 +1,27 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-public class ObstacleCreator : MonoBehaviour {
-    private GameObject[] obstacles;
+public class ObstacleCreator {
+    private float minSpace = 1f;
+    private float maxSpace = 3f;
+    private GameObject[] obstaclePrefabs;
+    private Vector3 position = Vector3.zero;
 
-    private void Start () {
-        obstacles = Resources.LoadAll("Obstacles").Select(o => (o as GameObject).gameObject).ToArray();
+    public ObstacleCreator() {
+        obstaclePrefabs = Resources.LoadAll("Obstacles").Select(o => (o as GameObject).gameObject).ToArray();
+    }
+
+    private GameObject NextRandomPrefab() {
+        return obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
     }
 
     public void CreateObstacle() {
-        Instantiate(obstacles[Random.Range(0, obstacles.Length)], transform.position, Quaternion.identity);
+        GameObject rnd = NextRandomPrefab();
+        GameObject.Instantiate(rnd, position, Quaternion.identity);
+        CapsuleCollider capsule = rnd.GetComponentInChildren<CapsuleCollider>();
+        float height = 0f;
+        if (capsule) height = capsule.height;
+        position.y -= height + Random.Range(minSpace, maxSpace);
     }
 }
 

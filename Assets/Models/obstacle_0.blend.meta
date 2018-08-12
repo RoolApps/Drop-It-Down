@@ -1,0 +1,256 @@
+fileFormatVersion: 2
+guid: 4e8b0b8368c17db429aa469549e82238
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cylinder
+    100002: Cylinder_001
+    100004: Cylinder_002
+    100006: Cylinder_003
+    100008: Cylinder_004
+    100010: Cylinder_005
+    100012: //RootNode
+    100014: Cylinder_006
+    100016: Cylinder_007
+    100018: Cylinder_008
+    100020: Cylinder_009
+    100022: Cylinder_010
+    100024: Obstacle_0
+    100026: Obstacle_0_001
+    100028: Obstacle_1
+    100030: Obstacle_1_001
+    100032: Obstacle_1_002
+    100034: Obstacle_2
+    100036: Obstacle_2_001
+    100038: Obstacle_3
+    100040: Obstacle_4
+    100042: Obstacle_1_003
+    100044: Obstacle_1_004
+    100046: Obstacle_1_005
+    100048: Obstacle_1_006
+    100050: Obstacle_1_007
+    100052: Obstacle_1_008
+    100054: Obstacle_1_009
+    100056: Obstacle_1_010
+    100058: Obstacle_1_011
+    400000: Cylinder
+    400002: Cylinder_001
+    400004: Cylinder_002
+    400006: Cylinder_003
+    400008: Cylinder_004
+    400010: Cylinder_005
+    400012: //RootNode
+    400014: Cylinder_006
+    400016: Cylinder_007
+    400018: Cylinder_008
+    400020: Cylinder_009
+    400022: Cylinder_010
+    400024: Obstacle_0
+    400026: Obstacle_0_001
+    400028: Obstacle_1
+    400030: Obstacle_1_001
+    400032: Obstacle_1_002
+    400034: Obstacle_2
+    400036: Obstacle_2_001
+    400038: Obstacle_3
+    400040: Obstacle_4
+    400042: Obstacle_1_003
+    400044: Obstacle_1_004
+    400046: Obstacle_1_005
+    400048: Obstacle_1_006
+    400050: Obstacle_1_007
+    400052: Obstacle_1_008
+    400054: Obstacle_1_009
+    400056: Obstacle_1_010
+    400058: Obstacle_1_011
+    2100000: unnamed
+    2100002: Material_002
+    2100004: cylinder
+    2100006: circle
+    2300000: Cylinder
+    2300002: Cylinder_001
+    2300004: Cylinder_002
+    2300006: Cylinder_003
+    2300008: Cylinder_004
+    2300010: Cylinder_005
+    2300012: Cylinder_006
+    2300014: Cylinder_007
+    2300016: Cylinder_008
+    2300018: Cylinder_009
+    2300020: Cylinder_010
+    2300022: Obstacle_0
+    2300024: Obstacle_0_001
+    2300026: Obstacle_1
+    2300028: Obstacle_1_001
+    2300030: Obstacle_1_002
+    2300032: Obstacle_2
+    2300034: Obstacle_2_001
+    2300036: Obstacle_3
+    2300038: Obstacle_4
+    2300040: Obstacle_1_003
+    2300042: Obstacle_1_004
+    2300044: Obstacle_1_005
+    2300046: Obstacle_1_006
+    2300048: Obstacle_1_007
+    2300050: Obstacle_1_008
+    2300052: Obstacle_1_009
+    2300054: Obstacle_1_010
+    2300056: Obstacle_1_011
+    3300000: Cylinder
+    3300002: Cylinder_001
+    3300004: Cylinder_002
+    3300006: Cylinder_003
+    3300008: Cylinder_004
+    3300010: Cylinder_005
+    3300012: Cylinder_006
+    3300014: Cylinder_007
+    3300016: Cylinder_008
+    3300018: Cylinder_009
+    3300020: Cylinder_010
+    3300022: Obstacle_0
+    3300024: Obstacle_0_001
+    3300026: Obstacle_1
+    3300028: Obstacle_1_001
+    3300030: Obstacle_1_002
+    3300032: Obstacle_2
+    3300034: Obstacle_2_001
+    3300036: Obstacle_3
+    3300038: Obstacle_4
+    3300040: Obstacle_1_003
+    3300042: Obstacle_1_004
+    3300044: Obstacle_1_005
+    3300046: Obstacle_1_006
+    3300048: Obstacle_1_007
+    3300050: Obstacle_1_008
+    3300052: Obstacle_1_009
+    3300054: Obstacle_1_010
+    3300056: Obstacle_1_011
+    4300000: Cylinder_005
+    4300002: Cylinder_004
+    4300004: Cylinder_003
+    4300006: Cylinder_001
+    4300008: Cylinder_002
+    4300010: Cylinder
+    4300012: Cylinder_010
+    4300014: Cylinder_009
+    4300016: Cylinder_008
+    4300018: Cylinder_007
+    4300020: Cylinder_006
+    4300022: Obstacle_0_001
+    4300024: Obstacle_2_001
+    4300026: Obstacle_1_002
+    4300028: Obstacle_1_001
+    4300030: Obstacle_4
+    4300032: Obstacle_2
+    4300034: Obstacle_3
+    4300036: Obstacle_1
+    4300038: Obstacle_0
+    4300040: Obstacle_1_008
+    4300042: Obstacle_1_007
+    4300044: Obstacle_1_006
+    4300046: Obstacle_1_005
+    4300048: Obstacle_1_004
+    4300050: Obstacle_1_003
+    4300052: Obstacle_1_011
+    4300054: Obstacle_1_010
+    4300056: Obstacle_1_009
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: circle
+    second: {fileID: 2100000, guid: 53405874ff832a642b4644108525edc2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cylinder
+    second: {fileID: 2100000, guid: 62ef4038a1a8a624a889901891aff317, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: unnamed
+    second: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
