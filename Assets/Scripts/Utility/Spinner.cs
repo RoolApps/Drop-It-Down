@@ -2,19 +2,23 @@
 using UnityEngine;
 
 public class Spinner : MonoBehaviour {
-    public float speed = 5f;
+    public float maxSpeed = 2f;
     public float duration = 1f;
-    public bool infinity = false;
+    public bool spinOnStart = false;
+
+    private int clockwise;
+    private float speed;
 
     private void Start() {
+        clockwise = Random.Range(0, 2) == 0 ? 1 : -1;
+        speed = Random.Range(.1f, maxSpeed) * clockwise;
         RotateRandomAngle();
-        if (!infinity) {
+        if (spinOnStart) {
             StartCoroutine(spinOnce());
         }
     }
 
     private void Update() {
-        if (!infinity) return;
         transform.Rotate(0, speed, 0);
     }
 

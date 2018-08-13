@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
 
         obstacleCreator = new ObstacleCreator();
-        SpawnObstacle(2);
+        SpawnObstacle(3);
     }
 
     private void Update() {
