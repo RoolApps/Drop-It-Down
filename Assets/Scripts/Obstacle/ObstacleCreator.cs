@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ObstacleCreator {
     private float minSpace = 1f;
-    private float maxSpace = 3f;
+    private float maxSpace = 5f;
     private GameObject[] obstaclePrefabs;
     private Vector3 position = Vector3.zero;
 

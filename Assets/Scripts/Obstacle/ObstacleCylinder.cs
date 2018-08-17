@@ -2,20 +2,17 @@
 
 public class ObstacleCylinder : MonoBehaviour {
     private Material material;
-    private float minOpacity = .5f;
+    private float minOpacity = .3f;
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("PlayerArea")) {
             material = GetComponent<MeshRenderer>().material;
-            Utility.MakeTransparenty(material);
+            
         }
     }
-
     private void OnTriggerStay(Collider other) {
         if (other.CompareTag("PlayerArea")) {
-            float distance = Vector3.Distance(other.transform.position, transform.position);
-            float opacity = minOpacity + (distance / 10);
-            Utility.SetOpacity(material, opacity);
+            Utility.SetOpacity(material, Mathf.Lerp(material.color.a, minOpacity, Time.deltaTime));
         }
     }
 }

@@ -10,6 +10,9 @@ TagManager:
   - MagnetBonus
   - PlayerSphere
   - PlayerArea
+  - Cylinder
+  - Background
+  - ObstacleController
   layers:
   - Default
   - TransparentFX

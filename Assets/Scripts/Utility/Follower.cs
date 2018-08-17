@@ -3,7 +3,13 @@
 public class Follower : MonoBehaviour {
     public Transform followTo;
 
-    void Update () {
-        transform.position = followTo.position;
-	}
+    private Vector3 offset;
+
+    void Start() {
+        offset = transform.position - followTo.transform.position;
+    }
+
+    void LateUpdate() {
+        transform.position = followTo.transform.position + offset;
+    }
 }

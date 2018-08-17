@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 
 public abstract class Bonus : MonoBehaviour {
-    //protected GameController gameController;
-
-    private void Start() {
-        //gameController = FindObjectOfType<GameController>();
-    }
+    public int reward = 0;
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
+        if (other.CompareTag("PlayerSphere")) {
+            GameController.instance.EncreaseScore(reward);
+            PlayerController.instance.BonusCollected(this);
+            SelfBonusEffect();
             Destroy(gameObject);
-            effect();
         }
     }
 
-    abstract protected void effect();
+    abstract protected void SelfBonusEffect();
 }

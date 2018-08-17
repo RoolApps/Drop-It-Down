@@ -3,28 +3,35 @@ using UnityEngine;
 
 public class Spinner : MonoBehaviour {
     public float maxSpeed = 2f;
-    public float duration = 1f;
-    public bool spinOnStart = false;
+    public bool constantSpeed = false;
+    public bool spinOnlyOnStart = false;
+    public float durationOnStart = 1f;
 
     private int clockwise;
     private float speed;
 
     private void Start() {
         clockwise = Random.Range(0, 2) == 0 ? 1 : -1;
-        speed = Random.Range(.1f, maxSpeed) * clockwise;
+        if (constantSpeed) {
+            speed = maxSpeed;
+        } else {
+            speed = Random.Range(.1f, maxSpeed) * clockwise;
+        }
         RotateRandomAngle();
-        if (spinOnStart) {
+        if (spinOnlyOnStart) {
             StartCoroutine(spinOnce());
         }
     }
 
     private void Update() {
-        transform.Rotate(0, speed, 0);
+        if (!spinOnlyOnStart) {
+            transform.Rotate(0, speed, 0);
+        }
     }
 
     private IEnumerator spinOnce() {
         float elapsed = .0f;
-        while(elapsed < duration) {
+        while(elapsed < durationOnStart) {
             elapsed += Time.deltaTime;
             transform.Rotate(0, speed, 0);
             yield return null;
