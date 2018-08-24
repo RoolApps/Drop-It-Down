@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public float sensitivity = 2f;
     public ParticleSystem boostPs;
     public ParticleSystem magnetPs;
+    public ParticleSystem shieldPs;
 
     public bool Shielded { get; private set; }
 
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour {
 
         boostPs.Stop();
         magnetPs.Stop();
+        shieldPs.Stop();
     }
 
     private void Update() {
@@ -108,7 +110,9 @@ public class PlayerController : MonoBehaviour {
 
     private IEnumerator ShieldEffect() {
         Shielded = true;
+        shieldPs.Play();
         yield return new WaitForSeconds(shieldEffectTime);
+        shieldPs.Stop();
         Shielded = false;
     }
 
