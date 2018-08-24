@@ -10,7 +10,8 @@ public class GameController : MonoBehaviour {
     public Text gameOverText;
     public TextMeshPro popupText;
 
-    private int score = 0;
+    public int Score { get; private set; }
+
     private bool gameIsOver = false;
     private ObstacleCreator obstacleCreator;
 
@@ -37,20 +38,19 @@ public class GameController : MonoBehaviour {
     }
 
     public void EncreaseScore(int value) {
-        score += value;
-        scoreText.text = score.ToString();
+        Score += value;
+        scoreText.text = Score.ToString();
 
         InstantiatePopupText(value.ToString());
     }
 
     private void InstantiatePopupText(string text) {
-        Vector3 random = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1));
+        Vector3 random = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2));
         Vector3 position = PlayerController.instance.transform.position + random;
         TextMeshPro txt = Instantiate(popupText, new Vector3(position.x, position.y, -3), Quaternion.identity);
         txt.SetText("+" + text);
     }
 
-    #region public methods
     public void EndGame() {
         if (gameIsOver) return;
         gameIsOver = true;
@@ -69,5 +69,4 @@ public class GameController : MonoBehaviour {
             obstacleCreator.CreateObstacle();
         }
     }
-    #endregion
 }

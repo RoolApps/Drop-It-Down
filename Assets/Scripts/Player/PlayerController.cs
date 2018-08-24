@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -9,11 +8,22 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 5f;
     public float sensitivity = 2f;
+    public ParticleSystem boostPs;
+    public ParticleSystem magnetPs;
+
+    public bool Shielded { get; private set; }
 
     private bool pressed = false;
     private bool magnetEffect = false;
+    private bool boostEffect = false;
+    private bool timeDelayEffect = false;
     private Vector2 startTouchPosition;
     private List<GameObject> spheres = new List<GameObject>();
+
+    private int magnedEffectTime = 5;
+    private int boostEffectTime = 5;
+    private int shieldEffectTime = 5;
+    private int timeDelayEffectTime = 5;
 
     private void Start() {
         if (instance == null) {
@@ -24,14 +34,24 @@ public class PlayerController : MonoBehaviour {
 
         spheres = Utility.FindChildrenWithTag(gameObject, "PlayerSphere");
         spheres.ForEach(s => Utility.SetColor(Utility.GetMaterial(s), ColorSheme.instance.Current.player));
+
+        boostPs.Stop();
+        magnetPs.Stop();
     }
 
     private void Update() {
         if (magnetEffect) {
-            GameObject[] stars = Physics.OverlapSphere(transform.position, 8).Where(c => c.CompareTag("StarBonus")).Select(c => c.gameObject).ToArray();
+            GameObject[] stars = Physics.OverlapSphere(transform.position, 8).Where(c => c.GetComponent<Star>() != null).Select(c => c.gameObject).ToArray();
             foreach (var star in stars) {
                 Vector3 position = spheres[Random.Range(0, spheres.Count)].transform.position;
-                star.transform.position = Vector3.MoveTowards(star.transform.position, position, .2f);
+                star.transform.position = Vector3.MoveTowards(star.transform.position, position, .25f);
+            }
+        }
+
+        if (timeDelayEffect) {
+            Spinner[] spinners = GameObject.FindObjectsOfType<Spinner>();
+            foreach(var spinner in spinners) {
+                spinner.speed = 0f;
             }
         }
     }
@@ -70,17 +90,60 @@ public class PlayerController : MonoBehaviour {
 
     private IEnumerator MagnetEffect() {
         magnetEffect = true;
-        yield return new WaitForSeconds(5);
+        magnetPs.Play();
+        yield return new WaitForSeconds(magnedEffectTime);
+        magnetPs.Stop();
         magnetEffect = false;
     }
 
-    public void EncreaseSpeed(float delta = .2f) {
-        speed += delta;
+    private IEnumerator BoostEffect() {
+        boostEffect = true;
+        speed += 3;
+        boostPs.Play();
+        yield return new WaitForSeconds(boostEffectTime);
+        speed -= 3;
+        boostPs.Stop();
+        boostEffect = false;
+    }
+
+    private IEnumerator ShieldEffect() {
+        Shielded = true;
+        yield return new WaitForSeconds(shieldEffectTime);
+        Shielded = false;
+    }
+
+    private IEnumerator TimeDelayEffect() {
+        timeDelayEffect = true;
+        yield return new WaitForSeconds(timeDelayEffectTime);
+        timeDelayEffect = false;
     }
 
     public void BonusCollected(Bonus bonus) {
-        if(bonus is Magnet) {
-            StartCoroutine(MagnetEffect());
+        switch (bonus.Type) {
+            case BonusType.Magnet: {
+                if (magnetEffect) StopCoroutine("MagnetEffect");
+                StartCoroutine("MagnetEffect");
+                break;
+            }
+            case BonusType.Boost: {
+                if (boostEffect) {
+                    StopCoroutine("BoostEffect");
+                    speed -= 3;
+                }
+                StartCoroutine("BoostEffect");
+                break;
+            }
+            case BonusType.Shield: {
+                if (Shielded) StopCoroutine("ShieldEffect");
+                StartCoroutine("ShieldEffect");
+                break;
+            }
+            case BonusType.TimeDelay: {
+                if (timeDelayEffect) StopCoroutine("TimeDelayEffect");
+                StartCoroutine("TimeDelayEffect");
+                break;
+            }
+            default: break;
         }
     }
 }

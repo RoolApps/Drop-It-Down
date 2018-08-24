@@ -7,9 +7,9 @@ public class ObstacleCylinder : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("PlayerArea")) {
             material = GetComponent<MeshRenderer>().material;
-            
         }
     }
+
     private void OnTriggerStay(Collider other) {
         if (other.CompareTag("PlayerArea")) {
             Utility.SetOpacity(material, Mathf.Lerp(material.color.a, minOpacity, Time.deltaTime));

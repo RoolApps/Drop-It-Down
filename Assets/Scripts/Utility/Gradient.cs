@@ -9,7 +9,7 @@ public class Gradient : MonoBehaviour {
         colors[1] = top;
         colors[3] = top;
         // bottom
-        float shadeFactor = .5f;
+        float shadeFactor = .6f;
         Color bottom = ColorSheme.instance.Current.background;
         bottom.r *= 1 - shadeFactor;
         bottom.g *= 1 - shadeFactor;

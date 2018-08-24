@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 
 public class BonusSpawner : MonoBehaviour {
@@ -16,11 +15,14 @@ public class BonusSpawner : MonoBehaviour {
         }
 
         if (Random.Range(0, 100) <= chance) {
-            spawnBonus();
+            SpawnBonus();
         }
 	}
 
-    private void spawnBonus() {
-        Instantiate(bonuses[Random.Range(0, bonuses.Length)], transform.position, transform.rotation, transform);
+    private void SpawnBonus() {
+        GameObject bonus = bonuses[Random.Range(0, bonuses.Length)];
+        if (bonus) {
+            Instantiate(bonus, transform.position, transform.rotation, transform);
+        }
     }
 }

@@ -2,24 +2,29 @@
 using UnityEngine;
 
 public class Spinner : MonoBehaviour {
+    public float speed;
     public float maxSpeed = 2f;
     public bool constantSpeed = false;
     public bool spinOnlyOnStart = false;
     public float durationOnStart = 1f;
+    public bool isBonus = false;
 
     private int clockwise;
-    private float speed;
 
     private void Start() {
+        if (!isBonus) {
+            maxSpeed = GameController.instance.Score / 300f;
+        }
+
+        RotateRandomAngle();
         clockwise = Random.Range(0, 2) == 0 ? 1 : -1;
         if (constantSpeed) {
             speed = maxSpeed;
         } else {
-            speed = Random.Range(.1f, maxSpeed) * clockwise;
+            speed = Random.Range(0f, maxSpeed) * clockwise;
         }
-        RotateRandomAngle();
         if (spinOnlyOnStart) {
-            StartCoroutine(spinOnce());
+            StartCoroutine(SpinOnce());
         }
     }
 
@@ -29,7 +34,7 @@ public class Spinner : MonoBehaviour {
         }
     }
 
-    private IEnumerator spinOnce() {
+    private IEnumerator SpinOnce() {
         float elapsed = .0f;
         while(elapsed < durationOnStart) {
             elapsed += Time.deltaTime;

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleController : MonoBehaviour {
-    private List<GameObject> destroyedObstacles = new List<GameObject>();
-    private List<GameObject> obstacles = new List<GameObject>();
-    private float destructionForse = 500f;
     private GameObject cylinder;
+    private float destructionForse = 500f;
+    private List<GameObject> obstacles = new List<GameObject>();
+    private List<GameObject> destroyedObstacles = new List<GameObject>();
 	
 	private void Start () {
         obstacles.Clear();
@@ -18,6 +18,8 @@ public class ObstacleController : MonoBehaviour {
         }
         cylinder = Utility.FindFirstWithTag(gameObject, "Cylinder");
         Utility.SetColor(Utility.GetMaterial(cylinder), ColorSheme.instance.Current.cylinder);
+
+        transform.Rotate(Vector3.up * Random.Range(0, 360));
     }
 
     public void Boom() {

@@ -11,7 +11,7 @@ public class Obstacle : MonoBehaviour {
         if (isColliding) return;
         isColliding = true;
 
-        if (other.CompareTag("PlayerSphere")) {
+        if (other.CompareTag("PlayerSphere") && !PlayerController.instance.Shielded) {
             GameController.instance.EndGame();
         }
     }
