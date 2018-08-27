@@ -6,25 +6,39 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public static PlayerController instance;
 
-    public float speed = 5f;
+    public float boostSpeed = 8f;
+    public float normalSpeed = 5f;
     public float sensitivity = 2f;
     public ParticleSystem boostPs;
     public ParticleSystem magnetPs;
     public ParticleSystem shieldPs;
+    public ParticleSystem timeDelayPs;
 
-    public bool Shielded { get; private set; }
-
+    private float speed;
     private bool pressed = false;
-    private bool magnetEffect = false;
-    private bool boostEffect = false;
-    private bool timeDelayEffect = false;
     private Vector2 startTouchPosition;
     private List<GameObject> spheres = new List<GameObject>();
+    private Dictionary<BonusEffect, Effect> effects = new Dictionary<BonusEffect, Effect>() {
+        { BonusEffect.Magnet, new Effect() },
+        { BonusEffect.Boost, new Effect() },
+        { BonusEffect.Shield, new Effect() },
+        { BonusEffect.TimeDelay, new Effect() }
+    };
 
-    private int magnedEffectTime = 5;
-    private int boostEffectTime = 5;
-    private int shieldEffectTime = 5;
-    private int timeDelayEffectTime = 5;
+    private class Effect {
+        private ParticleSystem system;
+
+        public float Time { get; set; }
+        public ParticleSystem System {
+            get {
+                return system;
+            }
+            set {
+                system = value;
+                system.Stop();
+            }
+        }
+    }
 
     private void Start() {
         if (instance == null) {
@@ -33,16 +47,19 @@ public class PlayerController : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        speed = normalSpeed;
+
         spheres = Utility.FindChildrenWithTag(gameObject, "PlayerSphere");
         spheres.ForEach(s => Utility.SetColor(Utility.GetMaterial(s), ColorSheme.instance.Current.player));
 
-        boostPs.Stop();
-        magnetPs.Stop();
-        shieldPs.Stop();
+        effects[BonusEffect.Magnet].System = magnetPs;
+        effects[BonusEffect.Boost].System = boostPs;
+        effects[BonusEffect.Shield].System = shieldPs;
+        effects[BonusEffect.TimeDelay].System = timeDelayPs;        
     }
 
     private void Update() {
-        if (magnetEffect) {
+        if (Bonus.HasEffect(BonusEffect.Magnet)) {
             GameObject[] stars = Physics.OverlapSphere(transform.position, 8).Where(c => c.GetComponent<Star>() != null).Select(c => c.gameObject).ToArray();
             foreach (var star in stars) {
                 Vector3 position = spheres[Random.Range(0, spheres.Count)].transform.position;
@@ -50,12 +67,20 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        if (timeDelayEffect) {
+        if (Bonus.HasEffect(BonusEffect.TimeDelay)) {
             Spinner[] spinners = GameObject.FindObjectsOfType<Spinner>();
             foreach(var spinner in spinners) {
-                spinner.speed = 0f;
+                spinner.StopSpin();
             }
         }
+
+        if (!Bonus.HasEffect(BonusEffect.Boost)) {
+            speed = normalSpeed + (GameController.instance.Score / 1000f);
+        } else {
+            speed = boostSpeed;
+        }
+
+        speed = Mathf.Clamp(speed, 0f, boostSpeed);
     }
 
     private void FixedUpdate() {
@@ -90,64 +115,35 @@ public class PlayerController : MonoBehaviour {
 #endif
     }
 
-    private IEnumerator MagnetEffect() {
-        magnetEffect = true;
-        magnetPs.Play();
-        yield return new WaitForSeconds(magnedEffectTime);
-        magnetPs.Stop();
-        magnetEffect = false;
-    }
-
-    private IEnumerator BoostEffect() {
-        boostEffect = true;
-        speed += 3;
-        boostPs.Play();
-        yield return new WaitForSeconds(boostEffectTime);
-        speed -= 3;
-        boostPs.Stop();
-        boostEffect = false;
-    }
-
-    private IEnumerator ShieldEffect() {
-        Shielded = true;
-        shieldPs.Play();
-        yield return new WaitForSeconds(shieldEffectTime);
-        shieldPs.Stop();
-        Shielded = false;
-    }
-
-    private IEnumerator TimeDelayEffect() {
-        timeDelayEffect = true;
-        yield return new WaitForSeconds(timeDelayEffectTime);
-        timeDelayEffect = false;
+    private IEnumerator StartEffect(BonusEffect type) {
+        while(effects[type].Time > 0f) {
+            effects[type].Time -= Time.deltaTime;            
+            yield return null;
+        }
+        effects[type].Time = 0f;
+        effects[type].System.Stop();
+        Bonus.RemoveEffect(type);
     }
 
     public void BonusCollected(Bonus bonus) {
-        switch (bonus.Type) {
-            case BonusType.Magnet: {
-                if (magnetEffect) StopCoroutine("MagnetEffect");
-                StartCoroutine("MagnetEffect");
-                break;
+        BonusEffect type = bonus.type;
+        if (effects.ContainsKey(type)) {
+            bool startCoroutine = false;
+            if (effects[type].Time == 0f) {
+                startCoroutine = true;
             }
-            case BonusType.Boost: {
-                if (boostEffect) {
-                    StopCoroutine("BoostEffect");
-                    speed -= 3;
-                }
-                StartCoroutine("BoostEffect");
-                break;
+
+            effects[type].Time += bonus.effectTime;
+
+            ParticleSystem ps = effects[type].System;
+            ps.Stop();
+            var main = ps.main;
+            main.duration = effects[type].Time;
+            ps.Play();
+
+            if (startCoroutine) {
+                StartCoroutine(StartEffect(type));
             }
-            case BonusType.Shield: {
-                if (Shielded) StopCoroutine("ShieldEffect");
-                StartCoroutine("ShieldEffect");
-                break;
-            }
-            case BonusType.TimeDelay: {
-                if (timeDelayEffect) StopCoroutine("TimeDelayEffect");
-                StartCoroutine("TimeDelayEffect");
-                break;
-            }
-            default: break;
         }
     }
 }

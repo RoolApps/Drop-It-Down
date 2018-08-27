@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour {
         Time.timeScale = 1f;
         gameOverText.gameObject.SetActive(false);
 
+        Bonus.Effects = BonusEffect.None;
+
         obstacleCreator = new ObstacleCreator();
         SpawnObstacle(3);
     }
@@ -37,18 +39,19 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void EncreaseScore(int value) {
+    public void EncreaseScore(int value, Color color) {
         Score += value;
         scoreText.text = Score.ToString();
 
-        InstantiatePopupText(value.ToString());
+        InstantiatePopupText(value.ToString(), color);
     }
 
-    private void InstantiatePopupText(string text) {
+    private void InstantiatePopupText(string text, Color color) {
         Vector3 random = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2));
         Vector3 position = PlayerController.instance.transform.position + random;
         TextMeshPro txt = Instantiate(popupText, new Vector3(position.x, position.y, -3), Quaternion.identity);
-        txt.SetText("+" + text);
+        txt.color = color;
+        txt.text = "+" + text;
     }
 
     public void EndGame() {

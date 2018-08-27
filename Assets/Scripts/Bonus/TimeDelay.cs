@@ -1,9 +1,7 @@
-﻿public class TimeDelay : Bonus {
+﻿using UnityEngine;
+
+public class TimeDelay : Bonus {
     private void Start() {
-        Type = BonusType.TimeDelay;
-    }
-
-    protected override void SelfBonusEffect() {
-
+        ColorUtility.TryParseHtmlString("#ffa01e", out color);
     }
 }

@@ -13,7 +13,8 @@ public class Spinner : MonoBehaviour {
 
     private void Start() {
         if (!isBonus) {
-            maxSpeed = GameController.instance.Score / 300f;
+            maxSpeed = GameController.instance.Score / 400f;
+            maxSpeed = Mathf.Clamp(maxSpeed, 0f, 2.5f);
         }
 
         RotateRandomAngle();
@@ -45,5 +46,9 @@ public class Spinner : MonoBehaviour {
 
     private void RotateRandomAngle() {
         transform.rotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up);
+    }
+
+    public void StopSpin() {
+        speed = Mathf.Lerp(speed, 0, Time.deltaTime);
     }
 }

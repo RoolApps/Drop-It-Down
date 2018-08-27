@@ -14,15 +14,25 @@ public class BonusSpawner : MonoBehaviour {
             bonuses = prefabs;
         }
 
-        if (Random.Range(0, 100) <= chance) {
+        if (Random.Range(1, 101) <= chance) {
             SpawnBonus();
         }
 	}
 
     private void SpawnBonus() {
         GameObject bonus = bonuses[Random.Range(0, bonuses.Length)];
-        if (bonus) {
+        if (bonus && GameController.instance.Score >= Bonus.BonusAccessibility(bonus.GetComponent<Bonus>().type)) {
             Instantiate(bonus, transform.position, transform.rotation, transform);
         }
+    }
+
+    public bool SpawnActivatedBonus(BonusEffect type) {
+        GameObject bonus = bonuses[Random.Range(0, bonuses.Length)];
+        BonusEffect bonusType = bonus.GetComponent<Bonus>().type;
+        if (bonusType != type || bonusType == BonusEffect.Star) return false;
+        if (bonus && GameController.instance.Score >= Bonus.BonusAccessibility(bonusType)) {
+            Instantiate(bonus, transform.position, transform.rotation, transform);
+        }
+        return true;
     }
 }

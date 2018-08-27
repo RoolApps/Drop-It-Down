@@ -1,8 +1,7 @@
-﻿public class Magnet : Bonus {
-    private void Start() {
-        Type = BonusType.Magnet;
-    }
+﻿using UnityEngine;
 
-    protected override void SelfBonusEffect() {
+public class Magnet : Bonus {
+    private void Start() { 
+        ColorUtility.TryParseHtmlString("#cb1eff", out color);
     }
 }

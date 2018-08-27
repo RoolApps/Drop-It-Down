@@ -1,8 +1,7 @@
-﻿public class Star : Bonus {
-    private void Start() {
-        Type = BonusType.Star;
-    }
+﻿using UnityEngine;
 
-    protected override void SelfBonusEffect() {
+public class Star : Bonus {
+    private void Start() {
+        ColorUtility.TryParseHtmlString("#f7ff1e", out color);
     }
 }

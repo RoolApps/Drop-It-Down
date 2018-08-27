@@ -1,44 +1,72 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public enum BonusType { Star, Magnet, Bomb, Boost, Shield, TimeDelay};
+[Flags]
+public enum BonusEffect {
+    None = 0,
+    Star = 1 << 0,
+    Magnet = 1 << 1,
+    Bomb = 1 << 2,
+    Boost = 1 << 3,
+    Shield = 1 << 4,
+    TimeDelay = 1 << 5
+}
 
 public abstract class Bonus : MonoBehaviour {
     public int reward = 0;
+    public float effectTime = 5f;
+    public BonusEffect type = BonusEffect.None;
 
-    public BonusType Type { get; protected set; }
+    protected Color color = Color.white;
+
+    static public BonusEffect Effects = BonusEffect.None;
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("PlayerSphere")) {
-            GameController.instance.EncreaseScore(reward);
-            PlayerController.instance.BonusCollected(this);
             SelfBonusEffect();
+            GameController.instance.EncreaseScore(reward, color);
+            PlayerController.instance.BonusCollected(this);
             Destroy(gameObject);
         }
     }
 
-    static public int BonusAccessibility(BonusType type) {
+    protected virtual void SelfBonusEffect() {
+        AddEffect(type);
+    }
+
+    static public void AddEffect(BonusEffect effect) {
+        Effects |= effect;
+    }
+
+    static public void RemoveEffect(BonusEffect effect) {
+        Effects &= ~effect;
+    }
+
+    static public bool HasEffect(BonusEffect effect) {
+        return (Effects & effect) != BonusEffect.None;
+    }
+
+    static public int BonusAccessibility(BonusEffect type) {
         switch (type) {
-            case BonusType.Star: {
+            case BonusEffect.Star: {
                 return 0;
             }
-            case BonusType.Magnet: {
+            case BonusEffect.Magnet: {
                 return 50;
             }
-            case BonusType.Bomb: {
-                return 100;
+            case BonusEffect.Bomb: {
+                return 150;
             }
-            case BonusType.Boost: {
-                return 200;
+            case BonusEffect.Boost: {
+                return 250;
             }
-            case BonusType.Shield: {
-                return 400;
+            case BonusEffect.Shield: {
+                return 350;
             }
-            case BonusType.TimeDelay: {
-                return 500;
+            case BonusEffect.TimeDelay: {
+                return 450;
             }
             default: return 0;
         }
     }
-
-    abstract protected void SelfBonusEffect();
 }

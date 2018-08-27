@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 public class BonusActivator : MonoBehaviour {
-    public BonusType type;
+    public BonusEffect type;
 
     private RawImage image;
     private bool activated = false;
@@ -15,12 +15,16 @@ public class BonusActivator : MonoBehaviour {
 
     private void Update () {
         if (activated) return;
-        if(GameController.instance.Score >= Bonus.BonusAccessibility(type)) {
+        if(Bonus.BonusAccessibility(type) <= GameController.instance.Score) {
             image.enabled = true;
             image.color = Color.white;
 
             GetComponent<Animator>().SetTrigger("Animate");
             activated = true;
+
+            foreach(var bonus in GameObject.FindObjectsOfType<BonusSpawner>()) {
+                if (bonus.SpawnActivatedBonus(type)) break;
+            }
         }
 	}
 }

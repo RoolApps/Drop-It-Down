@@ -1,9 +1,7 @@
-﻿public class Shield : Bonus {
-    private void Start() {
-        Type = BonusType.Shield;
-    }
+﻿using UnityEngine;
 
-    protected override void SelfBonusEffect() {
-        
+public class Shield : Bonus {
+    private void Start() {
+        ColorUtility.TryParseHtmlString("#1ea4ff", out color);
     }
 }

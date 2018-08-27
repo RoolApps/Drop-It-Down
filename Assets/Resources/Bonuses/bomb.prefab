@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4917182207972174}
   - component: {fileID: 135401274627778412}
-  - component: {fileID: 114157741290533006}
   - component: {fileID: 114305735520650086}
+  - component: {fileID: 114157741290533006}
   m_Layer: 0
   m_Name: bomb
   m_TagString: Untagged
@@ -303,7 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ee3fa8a4cdf39429a5c039559b1e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 0
+  reward: 10
+  effectTime: 0
 --- !u!114 &114305735520650086
 MonoBehaviour:
   m_ObjectHideFlags: 1

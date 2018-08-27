@@ -24,6 +24,15 @@ public class Utility {
         material.color = color;
     }
 
+    static public Color Darker(Color c) {
+        Color color = c;
+        float shadeFactor = .6f;
+        color.r *= shadeFactor;
+        color.g *= shadeFactor;
+        color.b *= shadeFactor;
+        return color;
+    }
+
     static public Material GetMaterial(GameObject target) {
         return target.GetComponent<MeshRenderer>().material;
     }

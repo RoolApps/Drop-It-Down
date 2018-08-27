@@ -1,8 +1,7 @@
-﻿public class Boost : Bonus {
-    private void Start() {
-        Type = BonusType.Boost;
-    }
+﻿using UnityEngine;
 
-    protected override void SelfBonusEffect() {
+public class Boost : Bonus {
+    private void Start() {
+        ColorUtility.TryParseHtmlString("#1efff6", out color);
     }
 }

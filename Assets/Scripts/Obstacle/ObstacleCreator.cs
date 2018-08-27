@@ -16,8 +16,8 @@ public class ObstacleCreator {
     }
 
     public void CreateObstacle() {
-        GameObject rnd = obstaclePrefabs[0];
-        //GameObject rnd = NextRandomPrefab();
+        //GameObject rnd = obstaclePrefabs[0];
+        GameObject rnd = NextRandomPrefab();
         GameObject.Instantiate(rnd, position, Quaternion.identity);
         CapsuleCollider capsule = rnd.GetComponentInChildren<CapsuleCollider>();
         float height = 0f;
