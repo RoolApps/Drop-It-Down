@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 
 public class BonusActivator : MonoBehaviour {
+    static public int spawned = 0;
+
     public BonusEffect type;
 
     private RawImage image;
@@ -18,13 +20,17 @@ public class BonusActivator : MonoBehaviour {
         if(Bonus.BonusAccessibility(type) <= GameController.instance.Score) {
             image.enabled = true;
             image.color = Color.white;
+            RectTransform rect = GetComponent<RectTransform>();
+            rect.anchoredPosition = new Vector2(0, -(spawned * (rect.rect.height + 10)));
 
             GetComponent<Animator>().SetTrigger("Animate");
             activated = true;
 
-            foreach(var bonus in GameObject.FindObjectsOfType<BonusSpawner>()) {
+            foreach (var bonus in GameObject.FindObjectsOfType<BonusSpawner>()) {
                 if (bonus.SpawnActivatedBonus(type)) break;
             }
+
+            BonusActivator.spawned++;
         }
 	}
 }

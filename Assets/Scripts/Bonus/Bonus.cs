@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Flags]
@@ -20,6 +23,13 @@ public abstract class Bonus : MonoBehaviour {
     protected Color color = Color.white;
 
     static public BonusEffect Effects = BonusEffect.None;
+    static private List<BonusEffect> bonusOrder = new List<BonusEffect>() {
+        BonusEffect.Magnet,
+        BonusEffect.Bomb,
+        BonusEffect.Boost,
+        BonusEffect.Shield,
+        BonusEffect.TimeDelay
+    };
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("PlayerSphere")) {
@@ -47,26 +57,12 @@ public abstract class Bonus : MonoBehaviour {
     }
 
     static public int BonusAccessibility(BonusEffect type) {
-        switch (type) {
-            case BonusEffect.Star: {
-                return 0;
-            }
-            case BonusEffect.Magnet: {
-                return 50;
-            }
-            case BonusEffect.Bomb: {
-                return 150;
-            }
-            case BonusEffect.Boost: {
-                return 250;
-            }
-            case BonusEffect.Shield: {
-                return 350;
-            }
-            case BonusEffect.TimeDelay: {
-                return 450;
-            }
-            default: return 0;
-        }
+        int index = bonusOrder.IndexOf(type);
+        if (index == -1) return 0;
+        return index * 75;
+    }
+
+    static public void ShuffleBonusOrder() {
+        bonusOrder = bonusOrder.OrderBy(v => UnityEngine.Random.Range(0, 256)).ToList();
     }
 }

@@ -6,6 +6,7 @@ public class BonusSpawner : MonoBehaviour {
     public GameObject[] prefabs;
 
     private GameObject[] bonuses;
+    private bool activated = false;
 
     private void Start () {
         if (prefabs.Length == 0) {
@@ -20,18 +21,22 @@ public class BonusSpawner : MonoBehaviour {
 	}
 
     private void SpawnBonus() {
+        if (activated) return;
         GameObject bonus = bonuses[Random.Range(0, bonuses.Length)];
         if (bonus && GameController.instance.Score >= Bonus.BonusAccessibility(bonus.GetComponent<Bonus>().type)) {
             Instantiate(bonus, transform.position, transform.rotation, transform);
+            activated = true;
         }
     }
 
     public bool SpawnActivatedBonus(BonusEffect type) {
+        if (activated) return false;
         GameObject bonus = bonuses[Random.Range(0, bonuses.Length)];
         BonusEffect bonusType = bonus.GetComponent<Bonus>().type;
         if (bonusType != type || bonusType == BonusEffect.Star) return false;
         if (bonus && GameController.instance.Score >= Bonus.BonusAccessibility(bonusType)) {
             Instantiate(bonus, transform.position, transform.rotation, transform);
+            activated = true;
         }
         return true;
     }

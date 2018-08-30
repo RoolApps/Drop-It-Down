@@ -7,8 +7,8 @@ public class GameController : MonoBehaviour {
     public static GameController instance;
 
     public Text scoreText;
-    public Text gameOverText;
     public TextMeshPro popupText;
+    public GameObject endGameMenu;
 
     public int Score { get; private set; }
 
@@ -18,25 +18,20 @@ public class GameController : MonoBehaviour {
     private void Awake() {
         if (instance == null) {
             instance = this;
-        }else if(instance != this) {
+        } else if(instance != this) {
             Destroy(gameObject);
         }
 
-        //DontDestroyOnLoad(gameObject);
-        
-        Time.timeScale = 1f;
-        gameOverText.gameObject.SetActive(false);
+        Time.timeScale = 0f;
+        endGameMenu.SetActive(true);
+
+        BonusActivator.spawned = 0;
 
         Bonus.Effects = BonusEffect.None;
+        Bonus.ShuffleBonusOrder();
 
         obstacleCreator = new ObstacleCreator();
         SpawnObstacle(3);
-    }
-
-    private void Update() {
-        if (gameIsOver && Input.GetMouseButtonDown(0)) {
-            ResumeGame();
-        }
     }
 
     public void EncreaseScore(int value, Color color) {
@@ -57,14 +52,21 @@ public class GameController : MonoBehaviour {
     public void EndGame() {
         if (gameIsOver) return;
         gameIsOver = true;
-        Time.timeScale = 0f;
-        gameOverText.gameObject.SetActive(true);
-    }
 
-    public void ResumeGame() {
-        gameIsOver = false;
+        PlayerPrefs.SetInt("currentScore", Score);
+        int bestScore = PlayerPrefs.GetInt("bestScore");
+        if(Score > bestScore) {
+            PlayerPrefs.SetInt("bestScore", Score);
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ColorSheme.instance.Generate();
+    }
+
+    public void StartGame() {
+        gameIsOver = false;
+        Time.timeScale = 1f;
+        endGameMenu.SetActive(false);
     }
 
     public void SpawnObstacle(int count = 1) {

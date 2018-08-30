@@ -8,6 +8,7 @@ public class Spinner : MonoBehaviour {
     public bool spinOnlyOnStart = false;
     public float durationOnStart = 1f;
     public bool isBonus = false;
+    public Vector3 vector = Vector3.up;
 
     private int clockwise;
 
@@ -31,7 +32,7 @@ public class Spinner : MonoBehaviour {
 
     private void Update() {
         if (!spinOnlyOnStart) {
-            transform.Rotate(0, speed, 0);
+            transform.Rotate(vector.x * speed, vector.y * speed, vector.z * speed);
         }
     }
 

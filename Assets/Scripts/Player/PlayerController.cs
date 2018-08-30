@@ -78,9 +78,14 @@ public class PlayerController : MonoBehaviour {
             speed = normalSpeed + (GameController.instance.Score / 1000f);
         } else {
             speed = boostSpeed;
+            
         }
 
         speed = Mathf.Clamp(speed, 0f, boostSpeed);
+    }
+
+    private void BoostScore() {
+        GameController.instance.EncreaseScore(1, Color.cyan);
     }
 
     private void FixedUpdate() {
@@ -123,6 +128,9 @@ public class PlayerController : MonoBehaviour {
         effects[type].Time = 0f;
         effects[type].System.Stop();
         Bonus.RemoveEffect(type);
+        if (type == BonusEffect.Boost) {
+            CancelInvoke("BoostScore");
+        }
     }
 
     public void BonusCollected(Bonus bonus) {
@@ -131,6 +139,9 @@ public class PlayerController : MonoBehaviour {
             bool startCoroutine = false;
             if (effects[type].Time == 0f) {
                 startCoroutine = true;
+                if(type == BonusEffect.Boost) {
+                    InvokeRepeating("BoostScore", 0f, .3f);
+                }
             }
 
             effects[type].Time += bonus.effectTime;

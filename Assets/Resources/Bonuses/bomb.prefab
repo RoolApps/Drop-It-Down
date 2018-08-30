@@ -305,6 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward: 10
   effectTime: 0
+  type: 4
 --- !u!114 &114305735520650086
 MonoBehaviour:
   m_ObjectHideFlags: 1
