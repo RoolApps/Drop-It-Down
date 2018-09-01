@@ -53,6 +53,8 @@ public class GameController : MonoBehaviour {
         if (gameIsOver) return;
         gameIsOver = true;
 
+        AudioController.instance.Play("GameOver");
+
         PlayerPrefs.SetInt("currentScore", Score);
         int bestScore = PlayerPrefs.GetInt("bestScore");
         if(Score > bestScore) {

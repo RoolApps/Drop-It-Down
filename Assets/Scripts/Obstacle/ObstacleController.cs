@@ -33,7 +33,11 @@ public class ObstacleController : MonoBehaviour {
     private void DestructObstacles(Transform t) {
         obstacles = obstacles.Except(destroyedObstacles).ToList();
         IEnumerable<GameObject> _obstacles = obstacles.Where(o => o.transform.position.y > t.position.y).Select(o => o);
-        foreach (GameObject obstacle in (t != null ? _obstacles : obstacles)) {
+        IEnumerable<GameObject> arr = (t != null ? _obstacles : obstacles);
+        if(arr.Count() != 0) {
+            AudioController.instance.Play("PassAreaEffect");
+        }
+        foreach (GameObject obstacle in arr) {
             StartCoroutine(DestroyObstacle(obstacle));
 
             Rigidbody rigidbody = obstacle.GetComponent<Rigidbody>();

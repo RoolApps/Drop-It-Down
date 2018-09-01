@@ -11,5 +11,6 @@ public class Bomb : Bonus {
         base.SelfBonusEffect();
         GameObject.FindObjectsOfType<ObstacleController>().ToList().ForEach(o => o.Boom());
         CameraShaker.Instance.ShakeOnce(3f, 1.5f, .1f, 2f);
+        AudioController.instance.Play("BombEffect");
     }
 }
