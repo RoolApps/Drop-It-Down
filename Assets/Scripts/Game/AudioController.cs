@@ -19,23 +19,23 @@ public class AudioController : MonoBehaviour {
 
     public Sound[] sounds;
 
-    private void Start() {
+    private void Awake() {
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            foreach (Sound s in sounds) {
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
+                s.source.volume = s.volume;
+                s.source.loop = s.loop;
+            }
+
+            if (PlayerPrefs.GetInt("Music") == 1) {
+                MusicOn();
+            }
         } else if (instance != this) {
             Destroy(gameObject);
-        }
-
-        foreach (Sound s in sounds) {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.loop = s.loop;
-        }
-
-        if (PlayerPrefs.GetInt("Music") == 1) {
-            MusicOn();
         }
     }
 

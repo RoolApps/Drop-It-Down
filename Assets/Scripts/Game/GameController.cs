@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class GameController : MonoBehaviour {
     public static GameController instance;
 
-    public Text scoreText;
+    public Text scoreText;    
     public TextMeshPro popupText;
     public GameObject endGameMenu;
 
@@ -52,6 +52,18 @@ public class GameController : MonoBehaviour {
     public void EndGame() {
         if (gameIsOver) return;
         gameIsOver = true;
+
+        Ads ads = Ads.instance;
+        int gamesPlayed = PlayerPrefs.GetInt("GamesPlayed") + 1;
+        if(gamesPlayed % ads.gamesCount == 0) {
+            bool adIsShowed = ads.Show();
+            if (adIsShowed) {
+                gamesPlayed = 0;
+            } else {
+                gamesPlayed--;
+            }
+        }
+        PlayerPrefs.SetInt("GamesPlayed", gamesPlayed);
 
         AudioController.instance.Play("GameOver");
 

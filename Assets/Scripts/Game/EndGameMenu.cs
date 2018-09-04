@@ -56,4 +56,8 @@ public class EndGameMenu : MonoBehaviour {
         musicOffButton.SetActive(true);
         AudioController.instance.MusicOff();
     }
+
+    public void Like() {
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.RoolApps.did");
+    }
 }

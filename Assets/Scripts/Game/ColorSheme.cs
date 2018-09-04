@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +22,12 @@ public class ColorSheme : MonoBehaviour {
     public Pallete Current { get; private set; }
 
     private string[][] htmlShemes = new string[][] {
+        new string[]{ "#3c2e3d", "#ecc7bf", "#fcad84", "#8acbc7"},
+        new string[]{ "#737495", "#68a8ad", "#f17d80", "#c4d4af"},
+        new string[]{ "#b86c99", "#fce8d8", "#d78ab7", "#ffffff"},
+        new string[]{ "#7F95D1", "#FFC0BE", "#FF82A9", "#FFEBE7"},
+        new string[]{ "#19405e", "#febebc", "#fafaf9", "#3279ad"},
+        new string[]{ "#CCCC99", "#9999CC", "#FFFFCC", "#99CC99"},
         new string[]{ "#060608", "#a696c8", "#2470a0", "#fad3cf"},
         new string[]{ "#c50d66", "#D25565", "#2E94B9", "#F0B775"},
         new string[]{ "#08D9D6", "#FF2E63", "#252A34", "#EAEAEA"},
@@ -62,13 +67,11 @@ public class ColorSheme : MonoBehaviour {
     private void Awake() {
         if (instance == null) {
             instance = this;
-        } else if (instance != this) {
-            Destroy(gameObject);
-        }
+            DontDestroyOnLoad(gameObject);
 
-        palletes = htmlShemes.Select(c => ToPallete(c)).ToList();
-
-        Generate();
+            palletes = htmlShemes.Select(c => ToPallete(c)).ToList();
+            Generate();
+        } 
     }
 
     public void Generate() {
