@@ -8,14 +8,14 @@ public class GameController : MonoBehaviour {
 
     public Text scoreText;    
     public TextMeshPro popupText;
-    public GameObject endGameMenu;
+    public GameObject UIMenu;
 
     public int Score { get; private set; }
 
     private bool gameIsOver = false;
     private ObstacleCreator obstacleCreator;
 
-    private void Awake() {
+    private void Start() {
         if (instance == null) {
             instance = this;
         } else if(instance != this) {
@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
         }
 
         Time.timeScale = 0f;
-        endGameMenu.SetActive(true);
+        UIMenu.SetActive(true);
 
         BonusActivator.spawned = 0;
 
@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour {
         Bonus.ShuffleBonusOrder();
 
         obstacleCreator = new ObstacleCreator();
-        SpawnObstacle(3);
     }
 
     public void EncreaseScore(int value, Color color) {
@@ -77,10 +76,35 @@ public class GameController : MonoBehaviour {
         ColorSheme.instance.Generate();
     }
 
-    public void StartGame() {
+    public void StartGame(string s) {
         gameIsOver = false;
         Time.timeScale = 1f;
-        endGameMenu.SetActive(false);
+        UIMenu.SetActive(false);
+
+
+        float ps = 0f;
+        float ss = 0f;
+        switch (s) {
+            case "Easy": {
+                break;
+            }
+            case "Normal": {
+                ps = .5f;
+                ss = .5f;
+                break;
+            }
+            case "Hard": {
+                ps = 1f;
+                ss = 1f;
+                break;
+            }
+            default: break;
+        }
+
+        PlayerPrefs.SetFloat("difficultyPlayerSpeed", ps);
+        PlayerPrefs.SetFloat("difficultySpinSpeed", ss);
+
+        SpawnObstacle(3);
     }
 
     public void SpawnObstacle(int count = 1) {

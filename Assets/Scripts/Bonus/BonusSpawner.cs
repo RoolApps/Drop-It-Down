@@ -8,7 +8,7 @@ public class BonusSpawner : MonoBehaviour {
     private GameObject[] bonuses;
     private bool activated = false;
 
-    private void Start () {
+    private void Start() {
         if (prefabs.Length == 0) {
             bonuses = Resources.LoadAll("Bonuses").Select(o => (o as GameObject).gameObject).ToArray();
         } else {
@@ -30,7 +30,7 @@ public class BonusSpawner : MonoBehaviour {
     }
 
     public bool SpawnActivatedBonus(BonusEffect type) {
-        if (activated) return false;
+        if (activated && bonuses == null) return false;
         GameObject bonus = bonuses[Random.Range(0, bonuses.Length)];
         BonusEffect bonusType = bonus.GetComponent<Bonus>().type;
         if (bonusType != type || bonusType == BonusEffect.Star) return false;

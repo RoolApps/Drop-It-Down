@@ -6,12 +6,12 @@ public class Gradient : MonoBehaviour {
         var colors = new Color[mesh.vertices.Length];
         // top
         Color top = ColorSheme.instance.Current.background;
-        colors[1] = top;
-        colors[3] = top;
+        colors[0] = top;
+        colors[2] = top;
         // bottom
         Color bottom = Utility.Darker(ColorSheme.instance.Current.background);
-        colors[0] = bottom;
-        colors[2] = bottom;
+        colors[1] = bottom;
+        colors[3] = bottom;
         mesh.colors = colors;
     }
 }

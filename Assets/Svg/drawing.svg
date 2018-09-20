@@ -2,6 +2,7 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
+   xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -20,23 +21,23 @@
      id="defs2" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#dfdfdf"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="88.571429"
-     inkscape:cy="1117.1429"
+     inkscape:cx="2044.656"
+     inkscape:cy="1126.5101"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="958"
+     inkscape:window-height="1008"
+     inkscape:window-x="953"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -50,8 +51,184 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
+     inkscape:label="UI"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,211.00002)" />
+     transform="translate(0,211.00002)">
+    <switch
+       transform="matrix(0.60889479,0.24952723,-0.24952723,0.60889479,31.099298,-202.62222)"
+       id="switch6"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.40207785"
+       inkscape:export-filename="D:\Projects\Unity3d\Drop-It-Down\Assets\Sprites\ui_settings.png"
+       inkscape:export-xdpi="95"
+       inkscape:export-ydpi="95">
+      <foreignObject
+         requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/"
+         x="0"
+         y="0"
+         width="1"
+         height="1" />
+      <g
+         i:extraneous="self"
+         id="g4"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.40207785">
+        <path
+           inkscape:connector-curvature="0"
+           d="M 94.8,40.8 84.2,39 c -0.6,-1.9 -1.4,-3.7 -2.3,-5.5 l 6.2,-8.7 C 89,23.5 88.9,21.7 87.8,20.6 L 79.3,12.1 C 78.2,11 76.4,10.8 75.1,11.8 L 66.4,18 C 64.7,17.1 62.8,16.3 60.9,15.7 L 59.2,5.2 C 58.9,3.6 57.6,2.5 56,2.5 H 44 c -1.6,0 -2.9,1.1 -3.2,2.7 L 39,15.8 c -1.9,0.6 -3.7,1.4 -5.5,2.3 L 24.8,11.9 C 23.5,11 21.7,11.1 20.6,12.2 l -8.5,8.5 c -1.1,1.1 -1.3,2.9 -0.3,4.2 l 6.2,8.7 c -0.9,1.7 -1.7,3.6 -2.3,5.5 L 5.2,40.8 C 3.6,41.1 2.5,42.4 2.5,44 v 12 c 0,1.6 1.1,2.9 2.7,3.2 L 15.8,61 c 0.6,1.9 1.4,3.7 2.3,5.5 l -6.2,8.7 c -0.9,1.3 -0.8,3.1 0.3,4.2 l 8.5,8.5 c 1.1,1.1 2.9,1.3 4.2,0.3 L 33.6,82 c 1.7,0.9 3.6,1.7 5.5,2.3 l 1.8,10.6 c 0.3,1.6 1.6,2.7 3.2,2.7 h 12 c 1.6,0 2.9,-1.1 3.2,-2.7 L 61,84.2 c 1.9,-0.6 3.7,-1.4 5.5,-2.3 l 8.7,6.2 c 1.3,0.9 3.1,0.8 4.2,-0.3 l 8.5,-8.5 c 1.1,-1.1 1.3,-2.9 0.3,-4.2 L 82,66.4 c 0.9,-1.7 1.7,-3.6 2.3,-5.5 l 10.6,-1.8 c 1.6,-0.3 2.7,-1.6 2.7,-3.2 V 44 C 97.5,42.4 96.4,41.1 94.8,40.8 Z M 50,67.1 c -9.5,0 -17.1,-7.7 -17.1,-17.1 0,-9.5 7.7,-17.1 17.1,-17.1 9.4,0 17.1,7.6 17.1,17.1 0,9.5 -7.6,17.1 -17.1,17.1 z"
+           id="path2"
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.40207785" />
+      </g>
+    </switch>
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#5bbad6;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect822"
+       width="150.74001"
+       height="64.144684"
+       x="105.83874"
+       y="-190.49963"
+       ry="9.4494038"
+       inkscape:export-filename="D:\Projects\Unity3d\Drop-It-Down\Assets\Sprites\ui_settings_panel.png"
+       inkscape:export-xdpi="95"
+       inkscape:export-ydpi="95" />
+    <g
+       id="g837"
+       transform="rotate(-15,52.328399,180.6446)"
+       inkscape:export-xdpi="95"
+       inkscape:export-ydpi="95"
+       inkscape:export-filename="D:\Projects\Unity3d\Drop-It-Down\Assets\Sprites\ui_easy.png">
+      <path
+         transform="matrix(1.5744716,0,0,1.5708658,-33.439037,-77.627535)"
+         inkscape:transform-center-y="-7.7406406e-006"
+         inkscape:transform-center-x="4.3827801e-006"
+         d="m 81.075111,122.77996 0,26.40428 -22.866779,13.20214 -22.866779,-13.20214 0,-26.40428 22.866779,-13.20214 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="0"
+         sodipodi:arg1="-0.52359878"
+         sodipodi:r2="22.866779"
+         sodipodi:r1="26.404282"
+         sodipodi:cy="135.9821"
+         sodipodi:cx="58.208332"
+         sodipodi:sides="6"
+         id="path824"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.27172446;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         sodipodi:type="star" />
+      <text
+         id="text828"
+         y="141.14688"
+         x="32.015827"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.1868515px;line-height:1.25;font-family:'Segoe Print';-inkscape-font-specification:'Segoe Print';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           id="tspan830"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Segoe Print';-inkscape-font-specification:'Segoe Print';stroke-width:0.26458332"
+           y="141.14688"
+           x="32.015827"
+           sodipodi:role="line">Easy</tspan></text>
+    </g>
+    <g
+       id="g863"
+       transform="translate(-2.6726953,-22.985179)"
+       inkscape:export-filename="D:\Projects\Unity3d\Drop-It-Down\Assets\Sprites\ui_normal.png"
+       inkscape:export-xdpi="95"
+       inkscape:export-ydpi="95">
+      <path
+         sodipodi:type="star"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.1437974;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="path839"
+         sodipodi:sides="6"
+         sodipodi:cx="58.208332"
+         sodipodi:cy="135.9821"
+         sodipodi:r1="26.404282"
+         sodipodi:r2="22.866779"
+         sodipodi:arg1="-0.52359878"
+         sodipodi:arg2="0"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 81.075111,122.77996 0,26.40428 -22.866779,13.20214 -22.866779,-13.20214 0,-26.40428 22.866779,-13.20214 z"
+         inkscape:transform-center-x="6.6019296e-006"
+         inkscape:transform-center-y="-7.7406406e-006"
+         transform="matrix(1.9463577,0,0,1.5708658,33.927386,-77.627535)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.1868515px;line-height:1.25;font-family:'Segoe Print';-inkscape-font-specification:'Segoe Print';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="104.67335"
+         y="144.72467"
+         id="text843"><tspan
+           sodipodi:role="line"
+           x="104.67335"
+           y="144.72467"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Segoe Print';-inkscape-font-specification:'Segoe Print';stroke-width:0.26458332"
+           id="tspan841">Normal</tspan></text>
+    </g>
+    <g
+       id="g871"
+       inkscape:export-filename="D:\Projects\Unity3d\Drop-It-Down\Assets\Sprites\ui_hard.png"
+       inkscape:export-xdpi="95"
+       inkscape:export-ydpi="95">
+      <path
+         transform="matrix(1.5208228,0.40750324,-0.40656999,1.5173398,212.62778,-96.204824)"
+         inkscape:transform-center-y="-7.7406406e-006"
+         inkscape:transform-center-x="4.3827801e-006"
+         d="m 81.075111,122.77996 0,26.40428 -22.866779,13.20214 -22.866779,-13.20214 0,-26.40428 22.866779,-13.20214 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="0"
+         sodipodi:arg1="-0.52359878"
+         sodipodi:r2="22.866779"
+         sodipodi:r1="26.404282"
+         sodipodi:cy="135.9821"
+         sodipodi:cx="58.208332"
+         sodipodi:sides="6"
+         id="path847"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.27172446;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         sodipodi:type="star" />
+      <text
+         transform="rotate(15)"
+         id="text851"
+         y="73.797028"
+         x="243.06296"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.1868515px;line-height:1.25;font-family:'Segoe Print';-inkscape-font-specification:'Segoe Print';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           id="tspan849"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Segoe Print';-inkscape-font-specification:'Segoe Print';stroke-width:0.26458332"
+           y="73.797028"
+           x="243.06296"
+           sodipodi:role="line">Hard</tspan></text>
+    </g>
+    <rect
+       style="opacity:1;fill:#f1f0ee;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect873"
+       width="114.90475"
+       height="107.34524"
+       x="530.3006"
+       y="-47.336338"
+       ry="0" />
+    <rect
+       ry="0"
+       y="-47.336338"
+       x="412.75"
+       height="107.34524"
+       width="114.90475"
+       id="rect875"
+       style="opacity:1;fill:#7acfd6;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+    <rect
+       style="opacity:1;fill:#e0474c;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect877"
+       width="114.90475"
+       height="107.34524"
+       x="530.3006"
+       y="-157.32741"
+       ry="0" />
+    <rect
+       ry="0"
+       y="-157.32741"
+       x="412.75"
+       height="107.34524"
+       width="114.90475"
+       id="rect879"
+       style="opacity:1;fill:#b11a21;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+  </g>
 </svg>

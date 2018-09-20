@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class EndGameMenu : MonoBehaviour {
-
+public class UIController : MonoBehaviour {
+    public GameObject menu;
+    public GameObject settings;
     public TextMeshProUGUI bestScore;
     public TextMeshProUGUI currentScore;
     public GameObject soundOnButton;
@@ -13,7 +14,10 @@ public class EndGameMenu : MonoBehaviour {
     private const int on = 1;
     private const int off = 0;
 
-    private void Start () {
+    private void Start() {
+        menu.SetActive(true);
+        settings.SetActive(false);
+
         bestScore.text = PlayerPrefs.GetInt("bestScore").ToString();
         currentScore.text = PlayerPrefs.GetInt("currentScore").ToString();
 
@@ -28,6 +32,12 @@ public class EndGameMenu : MonoBehaviour {
         } else {
             SoundOff();
         }
+    }
+
+    #region public
+    public void OnSettingsPressed() {
+        menu.GetComponent<Animator>().SetTrigger("Settings" + (settings.activeSelf ? "Off" : "On"));
+        settings.SetActive(!settings.activeSelf);
     }
 
     public void SoundOn() {
@@ -60,4 +70,5 @@ public class EndGameMenu : MonoBehaviour {
     public void Like() {
         Application.OpenURL("https://play.google.com/store/apps/details?id=com.RoolApps.did");
     }
+    #endregion
 }

@@ -75,10 +75,9 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (!Bonus.HasEffect(BonusEffect.Boost)) {
-            speed = normalSpeed + (GameController.instance.Score / 1000f);
+            speed = normalSpeed + (GameController.instance.Score / 1000f) + PlayerPrefs.GetFloat("difficultyPlayerSpeed");
         } else {
             speed = boostSpeed;
-            
         }
 
         speed = Mathf.Clamp(speed, 0f, boostSpeed);
@@ -93,6 +92,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void LateUpdate() {
+        if (Time.timeScale == 0f) return;
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0)) pressed = true;
         if (Input.GetMouseButtonUp(0)) pressed = false;

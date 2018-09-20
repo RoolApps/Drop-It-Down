@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Spinner : MonoBehaviour {
     public float speed;
-    public float maxSpeed = 2f;
+    public float maxSpeed = 2.5f;
     public bool constantSpeed = false;
     public bool spinOnlyOnStart = false;
     public float durationOnStart = 1f;
@@ -14,8 +14,7 @@ public class Spinner : MonoBehaviour {
 
     private void Start() {
         if (!isBonus) {
-            maxSpeed = GameController.instance.Score / 400f;
-            maxSpeed = Mathf.Clamp(maxSpeed, 0f, 2.5f);
+            maxSpeed = GameController.instance.Score / 400f + PlayerPrefs.GetFloat("difficultySpinSpeed");
         }
 
         RotateRandomAngle();
@@ -23,8 +22,11 @@ public class Spinner : MonoBehaviour {
         if (constantSpeed) {
             speed = maxSpeed;
         } else {
-            speed = Random.Range(0f, maxSpeed) * clockwise;
+            speed = Random.Range(0f, maxSpeed);
         }
+        
+        speed = Mathf.Clamp(maxSpeed, 0, 2.5f) * clockwise;
+
         if (spinOnlyOnStart) {
             StartCoroutine(SpinOnce());
         }
