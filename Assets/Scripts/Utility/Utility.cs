@@ -26,7 +26,7 @@ public class Utility {
 
     static public Color Darker(Color c) {
         Color color = c;
-        float shadeFactor = .6f;
+        float shadeFactor = .3f;
         color.r *= shadeFactor;
         color.g *= shadeFactor;
         color.b *= shadeFactor;

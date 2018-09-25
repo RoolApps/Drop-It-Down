@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using TMPro;
 
 public class UIController : MonoBehaviour {
@@ -14,7 +15,12 @@ public class UIController : MonoBehaviour {
     private const int on = 1;
     private const int off = 0;
 
+    private Animator animator;
+    private bool pressed = false;
+
     private void Start() {
+        animator = GetComponent<Animator>();
+
         menu.SetActive(true);
         settings.SetActive(false);
 
@@ -35,16 +41,23 @@ public class UIController : MonoBehaviour {
     }
 
     #region public
-    public void OnSettingsPressed() {
-        menu.GetComponent<Animator>().SetTrigger("Settings" + (settings.activeSelf ? "Off" : "On"));
-        settings.SetActive(!settings.activeSelf);
+    public void SettingsPressed() {
+        pressed = !pressed;
+        if (pressed) {
+            animator.SetTrigger("SettingsOn");
+        } else {
+            animator.SetTrigger("SettingsOff");
+        }
+    }
+
+    public void ExitApplication() {
+        Application.Quit();
     }
 
     public void SoundOn() {
         PlayerPrefs.SetInt("Sound", on);
         soundOffButton.SetActive(false);
         soundOnButton.SetActive(true);
-        AudioController.instance.Play("StarEffect");
     }
 
     public void SoundOff() {

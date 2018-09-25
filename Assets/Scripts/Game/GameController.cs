@@ -1,6 +1,8 @@
 ﻿using TMPro;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
@@ -9,10 +11,12 @@ public class GameController : MonoBehaviour {
     public Text scoreText;    
     public TextMeshPro popupText;
     public GameObject UIMenu;
+    public ParticleSystem explode;
 
     public int Score { get; private set; }
 
     private bool gameIsOver = false;
+    private bool gameIsPaused = false;
     private ObstacleCreator obstacleCreator;
 
     private void Start() {
@@ -33,13 +37,6 @@ public class GameController : MonoBehaviour {
         obstacleCreator = new ObstacleCreator();
     }
 
-    public void EncreaseScore(int value, Color color) {
-        Score += value;
-        scoreText.text = Score.ToString();
-
-        InstantiatePopupText(value.ToString(), color);
-    }
-
     private void InstantiatePopupText(string text, Color color) {
         Vector3 random = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2));
         Vector3 position = PlayerController.instance.transform.position + random;
@@ -48,32 +45,47 @@ public class GameController : MonoBehaviour {
         txt.text = "+" + text;
     }
 
-    public void EndGame() {
-        if (gameIsOver) return;
-        gameIsOver = true;
+    private IEnumerator EndGameCouroutine() {
+        AudioController.instance.Play("GameOver");
+        PlayerController player = PlayerController.instance;
+        player.normalSpeed = 0f;
+
+        player.gameObject.SetActive(false);
+        Instantiate(explode, player.transform.position, Quaternion.identity);
+        GameObject.FindObjectsOfType<ObstacleController>().ToList().ForEach(o => o.Boom());
+
+        yield return new WaitForSeconds(1f);
 
         Ads ads = Ads.instance;
         int gamesPlayed = PlayerPrefs.GetInt("GamesPlayed") + 1;
-        if(gamesPlayed % ads.gamesCount == 0) {
-            bool adIsShowed = ads.Show();
-            if (adIsShowed) {
-                gamesPlayed = 0;
-            } else {
-                gamesPlayed--;
-            }
+        if (gamesPlayed % ads.gamesCount == 0) {
+            ads.Show();
+            gamesPlayed = 0;
         }
         PlayerPrefs.SetInt("GamesPlayed", gamesPlayed);
 
-        AudioController.instance.Play("GameOver");
-
         PlayerPrefs.SetInt("currentScore", Score);
         int bestScore = PlayerPrefs.GetInt("bestScore");
-        if(Score > bestScore) {
+        if (Score > bestScore) {
             PlayerPrefs.SetInt("bestScore", Score);
         }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ColorSheme.instance.Generate();
+    }
+
+    public void EncreaseScore(int value, Color color) {
+        Score += value;
+        scoreText.text = Score.ToString();
+
+        InstantiatePopupText(value.ToString(), color);
+    }
+
+    public void EndGame() {
+        if (gameIsOver) return;
+        gameIsOver = true;
+
+        StartCoroutine(EndGameCouroutine());
     }
 
     public void StartGame(string s) {
@@ -105,6 +117,15 @@ public class GameController : MonoBehaviour {
         PlayerPrefs.SetFloat("difficultySpinSpeed", ss);
 
         SpawnObstacle(3);
+    }
+
+    public void PauseGame() {
+        if (!gameIsPaused) {
+            Time.timeScale = 0f;
+        } else {
+            Time.timeScale = 1f;
+        }
+        gameIsPaused = !gameIsPaused;
     }
 
     public void SpawnObstacle(int count = 1) {
